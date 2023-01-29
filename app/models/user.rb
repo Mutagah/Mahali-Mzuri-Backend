@@ -13,4 +13,17 @@ class User < ApplicationRecord
     validates :role, inclusion: { in: %w(manager client room_service cook security),
     message: "%{value} is not a valid role" }
 
+    # Information on User profile
+
+    has_one :user_profile, dependent: :destroy
+
+    after_create :profile
+
+    def profile
+        UserProfile.create(
+            username: self.username,email_address: self.email_address,
+            user_id: self.id,
+            password: self.password)
+    end
+
 end
