@@ -1,4 +1,16 @@
 class User < ApplicationRecord
-     # Information on user only
+    # Information on user only
     has_secure_password
+
+    validates :username, presence: true, uniqueness: true
+
+    validates :email_address, presence: true, uniqueness: true
+
+    validates :password, confirmation: true,presence: true, length: { minimum: 8 }
+
+    validates :password_confirmation, presence: true
+
+    validates :role, inclusion: { in: %w(manager client room_service cook security),
+    message: "%{value} is not a valid role" }
+
 end
