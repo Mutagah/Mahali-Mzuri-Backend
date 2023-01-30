@@ -3,8 +3,8 @@ module Api
     module V1
         class AuthController < ApplicationController
             def create
-                user = User.find_by(username: user_login_params[:username])
-                    mteja = User.find_by(email_address: user_login_params[:email_address])
+                user = User.find_by(username: user_login_params[:login_id])
+                    mteja = User.find_by(email_address: user_login_params[:login_id])
                     if (user && user.authenticate(user_login_params[:password])) || (mteja && mteja.authenticate(user_login_params[:password]))
                         if user != nil
                             token = encode_token({user_id: user.id})
@@ -20,7 +20,7 @@ module Api
             end
         private
         def user_login_params
-            params.permit(:username, :email_address,:password)
+            params.permit(:login_id,:password)
         end
         end
     end
