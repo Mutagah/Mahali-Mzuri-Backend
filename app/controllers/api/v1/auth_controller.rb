@@ -2,6 +2,9 @@
 module Api
     module V1
         class AuthController < ApplicationController
+            
+            skip_before_action :authorize, only: [:create]
+            
             def create
                 user = User.find_by(username: user_login_params[:login_id])
                     mteja = User.find_by(email_address: user_login_params[:login_id])
@@ -18,10 +21,13 @@ module Api
                         render json:{ error: "Invalid username or password"}, status: :unauthorized
                     end
             end
+
         private
+
         def user_login_params
             params.permit(:login_id,:password)
         end
+
         end
     end
 end

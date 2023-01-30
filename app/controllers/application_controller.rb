@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::API
+
+    before_action :authorize
+
+
     rescue_from ActiveRecord::RecordInvalid , with: :invalid_record
 
     def encode_token payload
@@ -25,7 +29,7 @@ class ApplicationController < ActionController::API
     def current_user
         # If the decode_token exists grab the user id from it
         if decode_token
-            user_id = decoded_token[0]['user_id']
+            user_id = decode_token[0]['user_id']
             user = User.find(user_id)
         end
     end

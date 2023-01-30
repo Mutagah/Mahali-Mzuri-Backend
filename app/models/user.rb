@@ -24,6 +24,7 @@ class User < ApplicationRecord
             username: self.username,
             email_address: self.email_address,
             user_id: self.id,
+            role: self.role,
             password: self.password)
     end
 
