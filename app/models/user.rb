@@ -21,7 +21,8 @@ class User < ApplicationRecord
 
     def profile
         UserProfile.create(
-            username: self.username,email_address: self.email_address,
+            username: self.username,
+            email_address: self.email_address,
             user_id: self.id,
             password: self.password)
     end
