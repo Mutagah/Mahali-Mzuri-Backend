@@ -32,4 +32,8 @@ class User < ApplicationRecord
             password: self.password)
     end
 
+    # Information on user - room booking
+
+    # has_many :user_room_bookings
+    # has_many :rooms, through: :user_room_bookings
 end

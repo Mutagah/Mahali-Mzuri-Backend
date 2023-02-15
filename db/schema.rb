@@ -10,21 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_14_100448) do
-  create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_02_15_043200) do
+  create_table "room_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "room_type"
-    t.text "room_description"
-    t.string "room_number"
+    t.text "description"
     t.integer "bedroom_capacity"
+    t.integer "number_of_rooms"
+    t.integer "price"
     t.boolean "parking"
-    t.string "room_image1"
-    t.string "room_image2"
-    t.string "room_image3"
-    t.string "room_image4"
-    t.string "room_image5"
-    t.integer "room_price"
+    t.string "image1"
+    t.string "image2"
+    t.string "image3"
+    t.string "image4"
+    t.string "image5"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "room_types_id", null: false
+    t.integer "room_number"
+    t.string "room_condition"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_types_id"], name: "index_rooms_on_room_types_id"
   end
 
   create_table "user_profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -43,18 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_100448) do
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
-  create_table "user_room_bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "room_id", null: false
-    t.string "number_of_residents"
-    t.datetime "booking_date"
-    t.datetime "check_out_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id"], name: "index_user_room_bookings_on_room_id"
-    t.index ["user_id"], name: "index_user_room_bookings_on_user_id"
-  end
-
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username"
     t.string "email_address"
@@ -65,7 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_100448) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "rooms", "room_types", column: "room_types_id"
   add_foreign_key "user_profiles", "users"
-  add_foreign_key "user_room_bookings", "rooms"
-  add_foreign_key "user_room_bookings", "users"
 end
