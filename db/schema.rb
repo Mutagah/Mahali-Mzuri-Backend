@@ -11,7 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
-  create_table "room_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "room_types", force: :cascade do |t|
     t.string "room_type"
     t.text "description"
     t.string "room_label"
@@ -28,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "rooms", force: :cascade do |t|
     t.bigint "room_type_id", null: false
     t.string "room_number"
     t.string "room_condition"
@@ -37,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
     t.index ["room_type_id"], name: "index_rooms_on_room_type_id"
   end
 
-  create_table "user_profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "user_profiles", force: :cascade do |t|
     t.string "full_name"
     t.string "username"
     t.string "password"
@@ -53,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
-  create_table "user_room_bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "user_room_bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
     t.string "number_of_residents"
@@ -65,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
     t.index ["user_id"], name: "index_user_room_bookings_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email_address"
     t.string "password_digest"
