@@ -34,6 +34,6 @@ class User < ApplicationRecord
 
     # Information on user - room booking
 
-    # has_many :user_room_bookings
-    # has_many :rooms, through: :user_room_bookings
+    has_many :user_room_bookings
+    has_many :rooms, through: :user_room_bookings
 end

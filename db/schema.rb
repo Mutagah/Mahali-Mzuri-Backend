@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_043200) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
   create_table "room_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "room_type"
     t.text "description"
@@ -53,6 +53,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_043200) do
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
+  create_table "user_room_bookings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.string "number_of_residents"
+    t.datetime "booking_date"
+    t.datetime "check_out_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_user_room_bookings_on_room_id"
+    t.index ["user_id"], name: "index_user_room_bookings_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "username"
     t.string "email_address"
@@ -65,4 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_043200) do
 
   add_foreign_key "rooms", "room_types"
   add_foreign_key "user_profiles", "users"
+  add_foreign_key "user_room_bookings", "rooms"
+  add_foreign_key "user_room_bookings", "users"
 end

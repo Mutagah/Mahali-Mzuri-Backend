@@ -1,4 +1,6 @@
 class RoomSerializer < ActiveModel::Serializer
   attributes :id, :room_number, :room_condition
-  has_one :room_types
+  belongs_to :room_types
+  has_many :user_room_bookings
+  has_many :users
 end
