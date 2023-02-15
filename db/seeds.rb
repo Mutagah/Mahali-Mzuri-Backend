@@ -38,24 +38,24 @@ puts "Seeding Database tables"
         roomtype3 = RoomType.create(room_type:"Queen Size",description:"Ideally suited for a small couple with no kids.",bedroom_capacity:2,
         room_label:"Que",number_of_rooms:10,price: 130,parking:true,image1:"https://media.cnn.com/api/v1/images/stellar/prod/180117182024-club-deluxe-room-king.jpg?q=w_1600,h_900,x_0,y_0,c_fill",image2:"https://cf.bstatic.com/xdata/images/hotel/max1280x900/292057390.jpg?k=f130d8fce73ab813938e9c7dedef4a096b624d0efc81fe84a2e62502c30438b0&o=&hp=1",image3:"https://c4.wallpaperflare.com/wallpaper/274/668/983/fabulous-living-room-living-room-set-wallpaper-preview.jpg",image4:"https://www.turtlebayresort.com/sites/default/files/2022-04/Standard_Ocean_View_Double_Queen_Full_Balcony_web.jpg",image5:"https://pix10.agoda.net/hotelImages/116/1165593/1165593_16030311190040420968.jpg?ca=6&ce=1&s=1024x768")
 
-        roomtype4 = RoomType.create(room_type:"Twin Size",description:"The room has two single beds for double occupancy. An extra bed may be added to this room at the request of a guest and charged accordingly. Here the bed size is normally 3 feet by 6 feet. These rooms are suitable for sharing accommodation among a group of delegates meeting.",room_label:"Twn",bedroom_capacity:4,number_of_rooms:20,price: 100,parking:true,image1:"https://st2.depositphotos.com/3386033/9243/i/450/depositphotos_92434730-stock-photo-elegant-hotel-twin-bedroom.jpg",image2:"https://s7d2.scene7.com/is/image/ritzcarlton/chirz-guestroom-bathroom-50726227?$XlargeViewport100pct$",image3:"https://www.lannatreehotelchiangmai.com/system/images/gallery/deluxe-twin-room4.jpg",image4:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/balcony-ideas-050916-ed-kathleenmccormick-office-079-1619811794.jpg",image5:"https://www.hotel-deparis-cannes.com/wp-content/uploads/cache/images/remote/www-hotel-deparis-cannes-com/Hotel-Cannes-de-Paris-chambre-Balcon-8-1024x683--1718086593.jpg")
+        roomtype4 = RoomType.create(room_type:"Twin Size",description:"The room has two single beds for double occupancy. An extra bed may be added to this room at the request of a guest and charged accordingly. Here the bed size is normally 3 feet by 6 feet. These rooms are suitable for sharing accommodation among a group of delegates meeting.",room_label:"Twn",bedroom_capacity:4,number_of_rooms:20,price: 100,parking:true,image1:"https://st2.depositphotos.com/3386033/9243/i/450/depositphotos_92434730-stock-photo-elegant-hotel-twin-bedroom.jpg",image2:"https://s7d2.scene7.com/is/image/ritzcarlton/chirz-guestroom-bathroom-50726227?$XlargeViewport100pct$",image3:"https://www.lannatreehotelchiangmai.com/system/images/gallery/deluxe-twin-room4.jpg",image4:"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/balcony-ideas-050916-ed-kathleenmccormick-office-079-1619811794.jpg",image5:"https://www.hotel-deparis-cannes.com/wp-content/uploads/cache/images/remote/www-hotel-deparis-cannes-com/  Hotel-Cannes-de-Paris-chambre-Balcon-8-1024x683--1718086593.jpg")
 
         roomtype5 = RoomType.create(room_type:"Single Size",description:"A room assigned to one person. May have one or more beds. The room size or area of Single Rooms are generally between 37m² to 45m²",room_label:"Sig",bedroom_capacity:1,number_of_rooms:20,price: 75,parking:false,image1:"https://www.crescenthoteloflondon.com/content/uploads/2021/11/Crescent-hotel-single-with-shower-2-final.jpg",image2:"https://www.parkcentraal.com/wp-content/uploads/2020/10/park-centraal-den-haag-rooms-comfort-single-3-1.jpg",image3:"https://ashleyfurniture.scene7.com/is/image/AshleyFurniture/H600001145_1?%24AFHS-PDP-Zoomed%24",image4:"https://images.yen.com.gh/images/dc8b9f4ba08ebd48.jpg?imwidth=900",image5:"https://media-cdn.tripadvisor.com/media/photo-s/15/57/af/7a/single-room-closet.jpg")
 
-
-
         
-    # puts "Seeding booking data ..."
+    puts "Seeding booking sample data ..."
 
-    # booking1 = UserRoomBooking.create(user_id:user2.id,room_id:room3.id,number_of_residents:2,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
+    # This is dummy data but a room in bad condition should not be booked.
 
-    # booking2 = UserRoomBooking.create(user_id:user6.id,room_id:room5.id,number_of_residents:1,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
+        booking1 = UserRoomBooking.create(user_id:user2.id,room_id:rand(11..20),number_of_residents:2,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
 
-    # booking3 = UserRoomBooking.create(user_id:user2.id,room_id:room2.id,number_of_residents:2,booking_date:"2023-02-14T10:00",check_out_date:"2023-02-16T10:00")
+        booking2 = UserRoomBooking.create(user_id:user6.id,room_id:rand(41..60),number_of_residents:1,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
 
-    # booking4 = UserRoomBooking.create(user_id:user6.id,room_id:room4.id,number_of_residents:4,booking_date:"2023-02-26T10:00",check_out_date:"2023-03-04T10:00")
+        booking3 = UserRoomBooking.create(user_id:user2.id,room_id:rand(6..10),number_of_residents:2,booking_date:"2023-02-14T10:00",check_out_date:"2023-02-16T10:00")
 
-    # booking5 = UserRoomBooking.create(user_id:user2.id,room_id:room1.id,number_of_residents:5,booking_date:"2023-05-01T08:00",check_out_date:"2023-05-01T10:00")
+        booking4 = UserRoomBooking.create(user_id:user6.id,room_id:rand(21..40),number_of_residents:4,booking_date:"2023-02-26T10:00",check_out_date:"2023-03-04T10:00")
+
+        booking5 = UserRoomBooking.create(user_id:user2.id,room_id:rand(1..5),number_of_residents:5,booking_date:"2023-05-01T08:00",check_out_date:"2023-05-01T10:00")
 
 puts "End of seeding data!"
 

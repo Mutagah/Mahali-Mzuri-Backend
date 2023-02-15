@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
   create_table "user_room_bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
-    t.string "number_of_residents"
+    t.integer "number_of_residents"
     t.datetime "booking_date"
     t.datetime "check_out_date"
     t.datetime "created_at", null: false
