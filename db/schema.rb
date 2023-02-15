@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_043200) do
   create_table "room_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "room_type"
     t.text "description"
+    t.string "room_label"
     t.integer "bedroom_capacity"
     t.integer "number_of_rooms"
     t.integer "price"
@@ -28,12 +29,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_043200) do
   end
 
   create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "room_types_id", null: false
-    t.integer "room_number"
+    t.bigint "room_type_id", null: false
+    t.string "room_number"
     t.string "room_condition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["room_types_id"], name: "index_rooms_on_room_types_id"
+    t.index ["room_type_id"], name: "index_rooms_on_room_type_id"
   end
 
   create_table "user_profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -62,6 +63,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_043200) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "rooms", "room_types", column: "room_types_id"
+  add_foreign_key "rooms", "room_types"
   add_foreign_key "user_profiles", "users"
 end

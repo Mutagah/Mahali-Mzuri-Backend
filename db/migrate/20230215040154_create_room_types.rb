@@ -3,6 +3,7 @@ class CreateRoomTypes < ActiveRecord::Migration[7.0]
     create_table :room_types do |t|
       t.string :room_type
       t.text :description
+      t.string :room_label
       t.integer :bedroom_capacity
       t.integer :number_of_rooms
       t.integer :price
