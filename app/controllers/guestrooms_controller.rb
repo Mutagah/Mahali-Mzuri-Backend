@@ -1,2 +1,0 @@
-class GuestroomsController < ApplicationController
-end

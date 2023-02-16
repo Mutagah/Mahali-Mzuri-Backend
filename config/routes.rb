@@ -3,7 +3,7 @@
   # Defines the root path route ("/")
   # root "articles#index"
 Rails.application.routes.draw do
-  resources :room_types
+ 
   resources :user_room_bookings
   
   namespace :api do
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :users
       resources :user_profiles
       resources :rooms
+       resources :room_types
       post '/login', to: 'auth#create'
     end 
   end
