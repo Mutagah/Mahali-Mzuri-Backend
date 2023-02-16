@@ -21,13 +21,18 @@ module Api
             render json: room_type,status: :accepted
         end  
 
-        # ensure that rooms associated with this rooms are not booked
-        # def destroy  
-        #     room_type = find_room_type
-        #     room_type.destroy!
-        #     # returns a head in the response but no body
-        #     head :no_content
-        # end
+       
+        def destroy  
+             # ensuring that rooms associated with this room type are not booked
+            room_type = find_room_type
+            if room_type.user_room_bookings.length == 0
+            room_type.destroy!
+            # returns a head in the response but no body
+            head :no_content
+            else 
+                render json: {message: "Sorry, some users have booked rooms under this type, get in touch with them to change their bookings."}
+            end
+        end
 
         private
 
