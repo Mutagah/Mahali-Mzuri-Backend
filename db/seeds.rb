@@ -47,15 +47,15 @@ puts "Seeding Database tables"
 
     # This is dummy data but a room in bad condition should not be booked.
 
-        booking1 = UserRoomBooking.create(user_id:user2.id,room_id:rand(11..20),number_of_residents:2,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
+        booking1 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(11..20),number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
 
-        booking2 = UserRoomBooking.create(user_id:user6.id,room_id:rand(41..60),number_of_residents:1,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
+        booking2 = UserRoomBooking.create!(user_id:user6.id,room_id:rand(41..60),number_of_adults:1,number_of_kids:0,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
 
-        booking3 = UserRoomBooking.create(user_id:user2.id,room_id:rand(6..10),number_of_residents:2,booking_date:"2023-02-14T10:00",check_out_date:"2023-02-16T10:00")
+        booking3 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(6..10),number_of_adults:2,number_of_kids:1,booking_date:"2023-02-14T10:00",check_out_date:"2023-02-16T10:00")
 
-        booking4 = UserRoomBooking.create(user_id:user6.id,room_id:rand(21..40),number_of_residents:4,booking_date:"2023-02-26T10:00",check_out_date:"2023-03-04T10:00")
+        booking4 = UserRoomBooking.create!(user_id:user6.id,room_id:rand(21..40),number_of_adults:3,number_of_kids:1,booking_date:"2023-02-26T10:00",check_out_date:"2023-03-04T10:00")
 
-        booking5 = UserRoomBooking.create(user_id:user2.id,room_id:rand(1..5),number_of_residents:5,booking_date:"2023-05-01T08:00",check_out_date:"2023-05-01T10:00")
+        booking5 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(1..5),number_of_adults:3,number_of_kids:2,booking_date:"2023-05-01T08:00",check_out_date:"2023-05-01T10:00")
 
 puts "End of seeding data!"
 
