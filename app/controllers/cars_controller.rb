@@ -20,13 +20,13 @@ class CarsController < ApplicationController
     end
 
     def update
-        car = find_unit
+        car = find_car
         car.update!(car_params)
         show
     end
 
     def destroy
-        car = find_unit
+        car = find_car
         car.destroy
         head :no_content
     end
@@ -45,7 +45,7 @@ class CarsController < ApplicationController
         render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
     end
 
-    def find_unit
+    def find_car
         Car.find(params[:id])
     end
 end
