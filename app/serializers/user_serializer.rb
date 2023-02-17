@@ -3,4 +3,5 @@ class UserSerializer < ActiveModel::Serializer
   has_one :user_profile
   has_many :user_room_bookings
   has_many :rooms 
+  has_many :special_meal_bookings
 end

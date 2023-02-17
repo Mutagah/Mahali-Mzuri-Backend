@@ -5,8 +5,10 @@ class CreateSpecialMealBookings < ActiveRecord::Migration[7.0]
       t.string :meal_name
       t.string :meal_type
       t.string :meal_description
+      t.integer :number_of_kids
+      t.integer :number_of_adults
       t.datetime :booking_date
-      t.string :meal_price
+      t.integer :meal_price
 
       t.timestamps
     end

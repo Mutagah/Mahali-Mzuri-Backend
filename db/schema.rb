@@ -45,8 +45,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_090312) do
     t.string "meal_name"
     t.string "meal_type"
     t.string "meal_description"
+    t.integer "number_of_kids"
+    t.integer "number_of_adults"
     t.datetime "booking_date"
-    t.string "meal_price"
+    t.integer "meal_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_special_meal_bookings_on_user_id"
