@@ -13,7 +13,7 @@ module Api
             room_booking = UserRoomBooking.create!(room_booking_params)
             render json: room_booking,status: :created
             else 
-                render json: {message: "Booking has already been made for this details"}
+                render json: {message: "Booking has already been made for this details"},status: :unprocessable_entity
             end
         end
         
@@ -33,7 +33,7 @@ module Api
         private
 
         def room_booking_params
-        params.permit(:user_id,:room_id,:number_of_adults,:number_of_kids,:booking_date,:check_out_date)
+            params.permit(:user_id,:room_id,:number_of_adults,:number_of_kids,:booking_date,:check_out_date)
         end
 
         def room_booking_update_params

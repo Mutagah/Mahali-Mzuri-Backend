@@ -36,4 +36,8 @@ class User < ApplicationRecord
 
     has_many :user_room_bookings
     has_many :rooms, through: :user_room_bookings
+
+    # Information on special Meal booking 
+
+    has_many :special_meal_bookings
 end

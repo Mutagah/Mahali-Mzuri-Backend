@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_17_090312) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_type_id"], name: "index_rooms_on_room_type_id"
+  end
+
+  create_table "special_meal_bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "meal_name"
+    t.string "meal_type"
+    t.string "meal_description"
+    t.datetime "booking_date"
+    t.string "meal_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_special_meal_bookings_on_user_id"
   end
 
   create_table "user_profiles", force: :cascade do |t|
@@ -80,6 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_071406) do
   end
 
   add_foreign_key "rooms", "room_types"
+  add_foreign_key "special_meal_bookings", "users"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "user_room_bookings", "rooms"
   add_foreign_key "user_room_bookings", "users"
