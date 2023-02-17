@@ -1,2 +1,4 @@
 class CarBookingsController < ApplicationController
+
+    
 end
