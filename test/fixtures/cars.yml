@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car_registration: 
+  car_type: MyString
+  no_of_seats: 1
+  car_condition: MyString
+
+two:
+  car_registration: 
+  car_type: MyString
+  no_of_seats: 1
+  car_condition: MyString
