@@ -10,28 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_02_17_090312) do
-=======
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_112734) do
->>>>>>> origin/ezra
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "car_bookings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "car_id"
-    t.date "book_date"
-    t.date "return_date"
+    t.bigint "user_id", null: false
+    t.bigint "car_id", null: false
+    t.datetime "book_date"
+    t.datetime "return_date"
     t.integer "number_of_passengers"
     t.string "destination_location"
     t.boolean "is_our_driver"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_car_bookings_on_car_id"
+    t.index ["user_id"], name: "index_car_bookings_on_user_id"
   end
 
   create_table "cars", force: :cascade do |t|
-    t.bigint "car_registration"
+    t.string "car_registration"
     t.string "car_type"
     t.integer "no_of_seats"
     t.string "car_condition"
@@ -118,6 +116,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_15_112734) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "car_bookings", "cars"
+  add_foreign_key "car_bookings", "users"
   add_foreign_key "rooms", "room_types"
   add_foreign_key "special_meal_bookings", "users"
   add_foreign_key "user_profiles", "users"
