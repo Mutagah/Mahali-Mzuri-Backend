@@ -10,9 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_17_090312) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_19_195907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "car_bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "car_id", null: false
+    t.datetime "book_date"
+    t.datetime "return_date"
+    t.integer "number_of_passengers"
+    t.string "destination_location"
+    t.boolean "is_our_driver"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_car_bookings_on_car_id"
+    t.index ["user_id"], name: "index_car_bookings_on_user_id"
+  end
+
+  create_table "cars", force: :cascade do |t|
+    t.string "car_registration"
+    t.string "car_type"
+    t.integer "no_of_seats"
+    t.string "car_condition"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meals", force: :cascade do |t|
+    t.string "meal_type"
+    t.string "meal_name"
+    t.integer "meal_price"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "car_bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -77,6 +109,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_090312) do
     t.index ["user_id"], name: "index_special_meal_bookings_on_user_id"
   end
 
+  create_table "user_meal_bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "meal_id", null: false
+    t.string "booking_type"
+    t.datetime "booking_date"
+    t.integer "quantity"
+    t.integer "total_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_user_meal_bookings_on_meal_id"
+    t.index ["user_id"], name: "index_user_meal_bookings_on_user_id"
+  end
+
   create_table "user_profiles", force: :cascade do |t|
     t.string "full_name"
     t.string "username"
@@ -120,6 +165,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_090312) do
   add_foreign_key "car_bookings", "users"
   add_foreign_key "rooms", "room_types"
   add_foreign_key "special_meal_bookings", "users"
+  add_foreign_key "user_meal_bookings", "meals"
+  add_foreign_key "user_meal_bookings", "users"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "user_room_bookings", "rooms"
   add_foreign_key "user_room_bookings", "users"

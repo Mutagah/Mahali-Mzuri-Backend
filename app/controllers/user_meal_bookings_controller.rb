@@ -1,0 +1,2 @@
+class UserMealBookingsController < ApplicationController
+end

@@ -54,4 +54,10 @@ class User < ApplicationRecord
 
     # Information on car_bookings
     has_many :car_bookings, dependent: :destroy
+    
+    # Information on user Meal booking
+
+    has_many :user_meal_bookings
+    
+    has_many :meals, through: :user_meal_bookings
 end
