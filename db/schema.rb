@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_17_120248) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_19_195907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "meals", force: :cascade do |t|
+    t.string "meal_type"
+    t.string "meal_name"
+    t.integer "meal_price"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "room_types", force: :cascade do |t|
     t.string "room_type"
@@ -40,16 +49,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_120248) do
     t.index ["room_type_id"], name: "index_rooms_on_room_type_id"
   end
 
-  create_table "special_meal_bookings", force: :cascade do |t|
+  create_table "user_meal_bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "meal_name"
-    t.string "meal_type"
-    t.string "meal_description"
-    t.string "booking_date"
-    t.string "meal_price"
+    t.bigint "meal_id", null: false
+    t.string "booking_type"
+    t.datetime "booking_date"
+    t.integer "meal_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_special_meal_bookings_on_user_id"
+    t.index ["meal_id"], name: "index_user_meal_bookings_on_meal_id"
+    t.index ["user_id"], name: "index_user_meal_bookings_on_user_id"
   end
 
   create_table "user_profiles", force: :cascade do |t|
@@ -91,7 +100,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_17_120248) do
   end
 
   add_foreign_key "rooms", "room_types"
-  add_foreign_key "special_meal_bookings", "users"
+  add_foreign_key "user_meal_bookings", "meals"
+  add_foreign_key "user_meal_bookings", "users"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "user_room_bookings", "rooms"
   add_foreign_key "user_room_bookings", "users"
