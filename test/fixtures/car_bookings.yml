@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  car_id: 1
+  book_date: 2023-02-15
+  return_date: 2023-02-15
+  number_of_passengers: 1
+  destination_location: MyString
+  is_our_driver: false
+
+two:
+  user_id: 1
+  car_id: 1
+  book_date: 2023-02-15
+  return_date: 2023-02-15
+  number_of_passengers: 1
+  destination_location: MyString
+  is_our_driver: false
