@@ -74,18 +74,15 @@ puts "Seeding Database tables"
          
     puts "Seeding user meal booking data ...."
 
-        usermealbooking1 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-05-12T10:00",quantity:1,total_price:(meal1.id * 1))
+        usermealbooking1 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-05-12T10:00",quantity:4,total_price:(meal1.id * 1))
 
+        usermealbooking2 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "direct", booking_date: "2019-05-12T10:00",quantity:1,total_price:(meal1.id * 1))
+
+        usermealbooking3 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "offline", booking_date: "2020-05-12T10:00",quantity:3,total_price:(meal1.id * 1))
+
+        usermealbooking4 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2021-05-12T10:00",quantity:5,total_price:(meal1.id * 1))
+
+        usermealbooking5 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "offline", booking_date: "2022-05-12T10:00",quantity:3,total_price:(meal1.id * 1))
        
-        # userMeal1 = user.UserMealBooking.create(email_address: user.id, meal_id: meals.first.id, booking_type: "online", booking_date: "2023-05-12T10:00")
-
-        # userMeal2 = UserMealBooking.create(user_id: user.id, meal_id: meals.first.id, booking_type: "offline", booking_date: "2022-05-12T10:00")
-
-        # userMeal3 = UserMealBooking.create(user_id: user.id, meal_id: meals.first.id, booking_type: "online", booking_date: "2020-05-12T10:00")
-
-        # userMeal4 = UserMealBooking.create(user_id: user.id, meal_id: meals.first.id, booking_type: "direct", booking_date: "2013-05-12T10:00")
-
-        # userMeal5 = UserMealBooking.create(user_id: user.id, meal_id: meals.first.id, booking_type: "offline", booking_date: "2021-05-12T10:00")
-
 puts "End of seeding data!"
 
