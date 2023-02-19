@@ -14,10 +14,12 @@ class User < ApplicationRecord
 
     validates :password_confirmation, presence: true,:on => :create
 
-    validates :role, inclusion: { in: %w(manager client room_service cook security),
+    attribute :role, :string, default: "client"
+
+    validates :role, inclusion: { in: %w(manager admin room_service cook security client),
     message: "%{value} is not a valid role" }
 
-    ROLES = %w{manager client room_service cook security}
+    ROLES = %w{manager admin room_service cook security client}
     
     ROLES.each do |role_name|
         define_method "#{role_name}?" do 

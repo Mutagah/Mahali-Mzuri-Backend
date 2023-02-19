@@ -49,6 +49,9 @@ puts "Seeding Database tables"
 
         booking1 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(11..20),number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
 
+            booking1a = UserRoomBooking.create!(user_id:user3.id,room_id:booking1.room.id,number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
+
+
         booking2 = UserRoomBooking.create!(user_id:user6.id,room_id:rand(41..60),number_of_adults:1,number_of_kids:0,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
 
         booking3 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(6..10),number_of_adults:2,number_of_kids:1,booking_date:"2023-02-14T10:00",check_out_date:"2023-02-16T10:00")

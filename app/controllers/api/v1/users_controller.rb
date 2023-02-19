@@ -7,8 +7,8 @@ module Api
 
             load_and_authorize_resource
 
-            def show
-                render json:current_user
+            def index
+                render json: User.all, status: :ok
             end
 
             def create
@@ -25,9 +25,11 @@ module Api
             end
 
             private
+
             def user_params
                 params.permit(:username,:email_address,:password,:password_confirmation,:role)
             end
+
         end
     end
 end

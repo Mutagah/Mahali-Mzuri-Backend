@@ -5,10 +5,15 @@ class Ability
 
   def initialize(user)
     # Define abilities for the user here. 
-      if user.present?
-        can [:read,:create,:destroy], User
-        can [:read,:update],  :UserProfile, user_id: user.id
-    end
+      if user.manager?
+        can :manage, :all
+      elsif user.room_service?
+        can [:read, :update],  UserProfile
+        can :read, UserRoomBooking
+    
+        
+      end
+
       #  return unless user.manager?
       #  can :manage, :all
     #
