@@ -10,7 +10,7 @@ puts "Seeding Database tables"
 
     puts "Seeding user data...."
 
-        user1 = User.create!(username:"ombese",email_address:"newtonombese1@gmail.com",password:"mahalimzuri",password_confirmation:"mahalimzuri",role:"manager")
+        user1 = User.create(username:"ombese",email_address:"newtonombese1@gmail.com",password:"mahalimzuri",password_confirmation:"mahalimzuri",role:"manager")
 
         user2 = User.create!(username:"irene",email_address:"irenenjuguna@gmail.com",password:"mahalimzuri",password_confirmation:"mahalimzuri",role:"client")  
 
@@ -43,11 +43,14 @@ puts "Seeding Database tables"
         roomtype5 = RoomType.create!(room_type:"Single Size",description:"A room assigned to one person. May have one or more beds. The room size or area of Single Rooms are generally between 37m² to 45m²",room_label:"Sigl",bedroom_capacity:1,number_of_rooms:20,price: 75,parking:false,image1:"https://www.crescenthoteloflondon.com/content/uploads/2021/11/Crescent-hotel-single-with-shower-2-final.jpg",image2:"https://www.parkcentraal.com/wp-content/uploads/2020/10/park-centraal-den-haag-rooms-comfort-single-3-1.jpg",image3:"https://ashleyfurniture.scene7.com/is/image/AshleyFurniture/H600001145_1?%24AFHS-PDP-Zoomed%24",image4:"https://images.yen.com.gh/images/dc8b9f4ba08ebd48.jpg?imwidth=900",image5:"https://media-cdn.tripadvisor.com/media/photo-s/15/57/af/7a/single-room-closet.jpg")
 
         
-    puts "Seeding booking sample data ..."
+    puts "Seeding room booking sample data ..."
 
     # This is dummy data but a room in bad condition should not be booked.
 
         booking1 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(11..20),number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
+
+            booking1a = UserRoomBooking.create!(user_id:user3.id,room_id:booking1.room.id,number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
+
 
         booking2 = UserRoomBooking.create!(user_id:user6.id,room_id:rand(41..60),number_of_adults:1,number_of_kids:0,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
 
@@ -56,6 +59,33 @@ puts "Seeding Database tables"
         booking4 = UserRoomBooking.create!(user_id:user6.id,room_id:rand(21..40),number_of_adults:3,number_of_kids:1,booking_date:"2023-02-26T10:00",check_out_date:"2023-03-04T10:00")
 
         booking5 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(1..5),number_of_adults:3,number_of_kids:2,booking_date:"2023-05-01T08:00",check_out_date:"2023-05-01T10:00")
+
+    puts "Seeding meals data ...."
+
+        meal1 = Meal.create!(meal_type:"breakfast",meal_name:"French toast & fried eggs",meal_price:2000,description:"Kienyeji eggs fried and some  yummy staple crepes") 
+
+        meal2 = Meal.create!(meal_type:"Brunch",meal_name:"Quiche",meal_price:200,description:"Made of eggs,dairy and filling from ham and cheddar") 
+
+        meal3 = Meal.create!(meal_type:"Lunch",meal_name:"Burrito Bowl",meal_price:700,description:"Combination of vegetables and avocado yummy and sweet") 
+
+        meal4 = Meal.create!(meal_type:"Dinner",meal_name:"Rice paper rolls",meal_price:450,description:"Pure bishori rice from mwea,Kenya cooked by our professional chefs") 
+
+        meal5 = Meal.create!(meal_type:"Super",meal_name:"Vegetable Salad",meal_price:2000,description:"Purely made of fresh vegetables for the vegeterians")
+         
+    puts "Seeding user meal booking data ...."
+
+        usermealbooking1 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-05-12T10:00",quantity:1,total_price:(meal1.id * 1))
+
+       
+        # userMeal1 = user.UserMealBooking.create(email_address: user.id, meal_id: meals.first.id, booking_type: "online", booking_date: "2023-05-12T10:00")
+
+        # userMeal2 = UserMealBooking.create(user_id: user.id, meal_id: meals.first.id, booking_type: "offline", booking_date: "2022-05-12T10:00")
+
+        # userMeal3 = UserMealBooking.create(user_id: user.id, meal_id: meals.first.id, booking_type: "online", booking_date: "2020-05-12T10:00")
+
+        # userMeal4 = UserMealBooking.create(user_id: user.id, meal_id: meals.first.id, booking_type: "direct", booking_date: "2013-05-12T10:00")
+
+        # userMeal5 = UserMealBooking.create(user_id: user.id, meal_id: meals.first.id, booking_type: "offline", booking_date: "2021-05-12T10:00")
 
 puts "End of seeding data!"
 

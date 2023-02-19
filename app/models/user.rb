@@ -40,4 +40,10 @@ class User < ApplicationRecord
     # Information on special Meal booking 
 
     has_many :special_meal_bookings
+    
+    # Information on user Meal booking
+
+    has_many :user_meal_bookings
+    
+    has_many :meals, through: :user_meal_bookings
 end
