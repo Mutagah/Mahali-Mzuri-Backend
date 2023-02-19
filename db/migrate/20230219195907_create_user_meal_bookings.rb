@@ -5,7 +5,9 @@ class CreateUserMealBookings < ActiveRecord::Migration[7.0]
       t.references :meal, null: false, foreign_key: true
       t.string :booking_type
       t.datetime :booking_date
-      t.integer :meal_price
+      t.integer :quantity
+      t.integer :total_price
+      # t.integer :meal_price
 
       t.timestamps
     end

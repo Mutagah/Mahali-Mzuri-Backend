@@ -54,7 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_195907) do
     t.bigint "meal_id", null: false
     t.string "booking_type"
     t.datetime "booking_date"
-    t.integer "meal_price"
+    t.integer "quantity"
+    t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meal_id"], name: "index_user_meal_bookings_on_meal_id"
