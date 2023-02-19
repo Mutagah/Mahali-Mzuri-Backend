@@ -5,6 +5,12 @@ module Api
             
             skip_before_action :authorize, only: [:create]
 
+            load_and_authorize_resource
+
+            def index
+                render json: User.all, status: :ok
+            end
+
             def create
                 user = User.create!(user_params)
                 if user.valid?
@@ -19,9 +25,11 @@ module Api
             end
 
             private
+
             def user_params
                 params.permit(:username,:email_address,:password,:password_confirmation,:role)
             end
+
         end
     end
 end

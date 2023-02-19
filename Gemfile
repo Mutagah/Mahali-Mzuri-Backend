@@ -15,6 +15,9 @@ gem "puma", "~> 5.0"
 # Used in encryption of passwords
 gem "bcrypt"
 
+# Used in limiting roles according to type of user
+gem "cancancan"
+
 # Used to encode and decode json web token"
 gem "jwt"
 

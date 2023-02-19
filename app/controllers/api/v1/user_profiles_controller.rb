@@ -2,6 +2,9 @@
 module Api
     module V1
         class UserProfilesController < ApplicationController
+
+        load_and_authorize_resource
+        
         def show
             profile = current_user.user_profile
             render json: profile, status: :ok

@@ -2,8 +2,9 @@ class ApplicationController < ActionController::API
 
     before_action :authorize
 
-
     rescue_from ActiveRecord::RecordInvalid , with: :invalid_record
+
+    rescue_from CanCan::AccessDenied, with: :cancan_denial
 
     def encode_token payload
         # mahali_mzuri_api in this case is the secret key
@@ -39,7 +40,12 @@ class ApplicationController < ActionController::API
     end
 
     private
+
     def invalid_record invalid
         render json: {errors: invalid.record.errors.full_messages},status: :unprocessable_entity
+    end
+
+    def cancan_denial
+        render json: {warning: "You are not authorized to access or manage this information"}, status: :unauthorized
     end
 end
