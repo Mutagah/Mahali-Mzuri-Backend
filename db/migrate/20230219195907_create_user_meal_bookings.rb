@@ -7,7 +7,6 @@ class CreateUserMealBookings < ActiveRecord::Migration[7.0]
       t.datetime :booking_date
       t.integer :quantity
       t.integer :total_price
-      # t.integer :meal_price
 
       t.timestamps
     end
