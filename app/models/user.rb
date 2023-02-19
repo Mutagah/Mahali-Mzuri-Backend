@@ -17,6 +17,15 @@ class User < ApplicationRecord
     validates :role, inclusion: { in: %w(manager client room_service cook security),
     message: "%{value} is not a valid role" }
 
+    ROLES = %w{manager client room_service cook security}
+    
+    ROLES.each do |role_name|
+        define_method "#{role_name}?" do 
+          role == role_name  
+        end
+    end
+
+
     # Information on User profile
 
     has_one :user_profile, dependent: :destroy
@@ -34,13 +43,13 @@ class User < ApplicationRecord
 
     # Information on user - room booking
 
-    has_many :user_room_bookings
+    has_many :user_room_bookings, dependent: :destroy
     has_many :rooms, through: :user_room_bookings
 
     # Information on special Meal booking 
 
-    has_many :special_meal_bookings
+    has_many :special_meal_bookings, dependent: :destroy
 
     # Information on car_bookings
-    has_many :car_bookings
+    has_many :car_bookings, dependent: :destroy
 end

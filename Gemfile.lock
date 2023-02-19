@@ -73,6 +73,7 @@ GEM
       tzinfo (~> 2.0)
     bcrypt (3.1.18)
     builder (3.2.4)
+    cancancan (3.4.0)
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.2.0)
@@ -166,6 +167,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   bcrypt
+  cancancan
   debug
   jwt
   pg (~> 1.1)

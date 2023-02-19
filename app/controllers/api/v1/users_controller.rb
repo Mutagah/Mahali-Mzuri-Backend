@@ -5,6 +5,8 @@ module Api
             
             skip_before_action :authorize, only: [:create]
 
+            load_and_authorize_resource
+
             def show
                 render json:current_user
             end
