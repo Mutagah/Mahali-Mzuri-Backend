@@ -3,6 +3,7 @@
   # Defines the root path route ("/")
   # root "articles#index"
 Rails.application.routes.draw do
+  resources :meals
   resources :special_meal_bookings
  
   resources :user_room_bookings
