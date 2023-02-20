@@ -2,6 +2,8 @@ class ApplicationController < ActionController::API
 
     before_action :authorize
 
+    rescue_from ActiveRecord::RecordNotFound , with: :unfound_record
+
     rescue_from ActiveRecord::RecordInvalid , with: :invalid_record
 
     rescue_from CanCan::AccessDenied, with: :cancan_denial
@@ -43,6 +45,10 @@ class ApplicationController < ActionController::API
 
     def invalid_record invalid
         render json: {errors: invalid.record.errors.full_messages},status: :unprocessable_entity
+    end
+
+    def unfound_record (error)
+        render json:{errors: error},status: :not_found
     end
 
     def cancan_denial

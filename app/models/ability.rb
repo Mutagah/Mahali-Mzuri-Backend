@@ -9,7 +9,7 @@ class Ability
         can :manage, :all
       elsif user.room_service?
         can [:read, :update],  UserProfile
-        can :read, UserRoomBooking
+        can :read, RoomService
     
         
       end
