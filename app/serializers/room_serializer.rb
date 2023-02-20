@@ -3,4 +3,5 @@ class RoomSerializer < ActiveModel::Serializer
   belongs_to :room_type
   has_many :user_room_bookings
   has_many :users
+  has_many :room_services
 end

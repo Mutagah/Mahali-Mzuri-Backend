@@ -3,6 +3,11 @@ module Api
     module V1
         class UserRoomBookingsController < ApplicationController
         
+            # This is for room service guys and the manager
+        def index
+            render json: UserRoomBooking.all,status: :ok
+        end
+
             # This is for the client who wants to see the room booked
         def show
             room_booked = current_user.user_room_bookings

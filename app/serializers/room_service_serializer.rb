@@ -1,5 +1,7 @@
 class RoomServiceSerializer < ActiveModel::Serializer
   attributes :id, :service_date
-  has_one :user
-  has_one :user_room_booking
+  belongs_to :user
+  belongs_to :room
+  belongs_to :user_room_booking
+  
 end

@@ -49,9 +49,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_094638) do
   create_table "room_services", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "user_room_booking_id", null: false
+    t.bigint "room_id", null: false
     t.date "service_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_services_on_room_id"
     t.index ["user_id"], name: "index_room_services_on_user_id"
     t.index ["user_room_booking_id"], name: "index_room_services_on_user_room_booking_id"
   end
@@ -150,6 +152,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_094638) do
 
   add_foreign_key "car_bookings", "cars"
   add_foreign_key "car_bookings", "users"
+  add_foreign_key "room_services", "rooms"
   add_foreign_key "room_services", "user_room_bookings"
   add_foreign_key "room_services", "users"
   add_foreign_key "rooms", "room_types"
