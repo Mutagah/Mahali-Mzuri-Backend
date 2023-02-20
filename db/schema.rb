@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_19_195907) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_20_094638) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,27 +46,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_195907) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "car_bookings", force: :cascade do |t|
+  create_table "room_services", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "car_id", null: false
-    t.datetime "book_date"
-    t.datetime "return_date"
-    t.integer "number_of_passengers"
-    t.string "destination_location"
-    t.boolean "is_our_driver"
+    t.bigint "user_room_booking_id", null: false
+    t.date "service_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["car_id"], name: "index_car_bookings_on_car_id"
-    t.index ["user_id"], name: "index_car_bookings_on_user_id"
-  end
-
-  create_table "cars", force: :cascade do |t|
-    t.string "car_registration"
-    t.string "car_type"
-    t.integer "no_of_seats"
-    t.string "car_condition"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_room_services_on_user_id"
+    t.index ["user_room_booking_id"], name: "index_room_services_on_user_room_booking_id"
   end
 
   create_table "room_types", force: :cascade do |t|
@@ -163,6 +150,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_195907) do
 
   add_foreign_key "car_bookings", "cars"
   add_foreign_key "car_bookings", "users"
+  add_foreign_key "room_services", "user_room_bookings"
+  add_foreign_key "room_services", "users"
   add_foreign_key "rooms", "room_types"
   add_foreign_key "special_meal_bookings", "users"
   add_foreign_key "user_meal_bookings", "meals"
