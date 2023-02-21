@@ -1,2 +1,0 @@
-class SpecialMealBookingsController < ApplicationController
-end

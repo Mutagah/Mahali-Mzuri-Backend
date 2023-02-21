@@ -1,8 +1,10 @@
 class CarBookingsController < ApplicationController
+
+    load_and_authorize_resource
+
     wrap_parameters format: []
     # before_action :authorize
-    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-
+    # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     
     def index 
         bookings = CarBooking.all
@@ -14,7 +16,7 @@ class CarBookingsController < ApplicationController
         if booking
             render json:booking
         else
-            render json:{error:"CarBooking not found"}, status: :not_found
+            render json:{error:"Car Booking not found"}, status: :not_found
         end
     end
 
@@ -46,12 +48,12 @@ class CarBookingsController < ApplicationController
         params.permit(:user_id, :car_id, :book_date, :return_date, :number_of_passengers, :destination_location, :is_our_driver)
     end
 
-    def render_not_found_response 
-        render json: {error:"Not found"}, status: :not_found
-    end
-
     def find_car
         CarBooking.find_by(params[:booking_id])
     end
+
+     # def render_not_found_response 
+    #     render json: {error:"Not found"}, status: :not_found
+    # end
     
 end

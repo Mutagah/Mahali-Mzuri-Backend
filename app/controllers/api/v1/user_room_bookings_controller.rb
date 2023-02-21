@@ -3,6 +3,8 @@ module Api
     module V1
         class UserRoomBookingsController < ApplicationController
         
+        load_and_authorize_resource
+        
             # This is for room service guys and the manager
         def index
             render json: UserRoomBooking.all,status: :ok

@@ -3,7 +3,13 @@ module Api
     module V1
         class RoomTypesController < ApplicationController
          
+        load_and_authorize_resource
+
         skip_before_action :authorize, only: [:show]
+
+        def index
+            render json: RoomType.all,status: :ok
+        end
 
         def show
             room_type = find_room_type
@@ -26,9 +32,9 @@ module Api
              # ensuring that rooms associated with this room type are not booked
             room_type = find_room_type
             if room_type.user_room_bookings.length == 0
-            room_type.destroy!
-            # returns a head in the response but no body
-            head :no_content
+                room_type.destroy!
+                # returns a head in the response but no body
+                head :no_content
             else 
                 render json: {message: "Sorry, some users have booked rooms under this type, get in touch with them to change their bookings."}
             end

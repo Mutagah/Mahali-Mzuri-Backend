@@ -3,6 +3,8 @@ module Api
     module V1
         class RoomsController < ApplicationController
         
+        load_and_authorize_resource
+        
         # All actions are for the manager
         def index
             render json:Room.all, status: :ok
