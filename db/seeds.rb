@@ -59,6 +59,10 @@ puts "Seeding Database tables"
 
             room_service_1d = RoomService.create!(user_id:user3.id,user_room_booking_id:booking1.id,room_id:"#{booking1.room_id}",service_date:"2023-05-15")
 
+        puts  ".... Seeding special meals booking data for our first user ...."
+
+            specialmealbookings = SpecialMealBooking.create!(user_id:user2.id,room_id:"#{booking1.room_id}",user_room_booking_id:booking1.id,meal_name:"Grilled Fish in Coconut Sauce", meal_type:"Dinner", meal_description:"This dish is a Coastal E/African delicacy that is a loved by almost every family up and down the East Coast, from Mombasa, to Malindi, Lamu and all the way to Zanzibar! A delicious smoky flavourful grilled fish which is then coated with a rich, thick and creamy tamarind-flavoured coconut sauce.This dish is particularly enjoyable with Coconut Rice but can also be had with Mandazi, or Naan and maybe a side of spinach. Once you try this dish, it will definitely count as one of your favourite exotic seafood meals!! YUM!!", number_of_kids:0, number_of_adults:2,booking_date:"2023-05-12T22:00")
+
         booking2 = UserRoomBooking.create!(user_id:user6.id,room_id:rand(41..60),number_of_adults:1,number_of_kids:0,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
 
         booking3 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(6..10),number_of_adults:2,number_of_kids:1,booking_date:"2023-02-14T10:00",check_out_date:"2023-02-16T10:00")
