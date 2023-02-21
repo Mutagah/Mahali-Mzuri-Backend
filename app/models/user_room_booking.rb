@@ -9,5 +9,9 @@ class UserRoomBooking < ApplicationRecord
   # Information on room services
 
   has_many :room_services,dependent: :destroy
+
+  # Information on special meal bookings
+
+  has_many :special_meal_bookings
   
 end

@@ -3,6 +3,8 @@ module Api
     module V1
         class SpecialMealBookingsController < ApplicationController
 
+            load_and_authorize_resource
+
             # This action is to be done by the cook
             def index
                 render json: SpecialMealBooking.all,status: :ok
