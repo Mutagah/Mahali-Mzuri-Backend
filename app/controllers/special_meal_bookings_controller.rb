@@ -1,2 +1,3 @@
 class SpecialMealBookingsController < ApplicationController
+    
 end

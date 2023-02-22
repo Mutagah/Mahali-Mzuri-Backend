@@ -89,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_195907) do
   create_table "user_meal_bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "meal_id", null: false
+    t.bigint "room_id", null: false
     t.string "booking_type"
     t.datetime "booking_date"
     t.integer "quantity"
@@ -96,6 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_195907) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meal_id"], name: "index_user_meal_bookings_on_meal_id"
+    t.index ["room_id"], name: "index_user_meal_bookings_on_room_id"
     t.index ["user_id"], name: "index_user_meal_bookings_on_user_id"
   end
 
@@ -142,6 +144,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_195907) do
   add_foreign_key "rooms", "room_types"
   add_foreign_key "special_meal_bookings", "users"
   add_foreign_key "user_meal_bookings", "meals"
+  add_foreign_key "user_meal_bookings", "rooms"
   add_foreign_key "user_meal_bookings", "users"
   add_foreign_key "user_profiles", "users"
   add_foreign_key "user_room_bookings", "rooms"

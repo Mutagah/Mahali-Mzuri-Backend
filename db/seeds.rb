@@ -49,8 +49,7 @@ puts "Seeding Database tables"
 
         booking1 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(11..20),number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
 
-            booking1a = UserRoomBooking.create!(user_id:user3.id,room_id:booking1.room.id,number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
-
+        booking1a = UserRoomBooking.create!(user_id:user3.id,room_id:booking1.room.id,number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
 
         booking2 = UserRoomBooking.create!(user_id:user6.id,room_id:rand(41..60),number_of_adults:1,number_of_kids:0,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
 
@@ -72,17 +71,17 @@ puts "Seeding Database tables"
 
         meal5 = Meal.create!(meal_type:"Super",meal_name:"Vegetable Salad",meal_price:2000,description:"Purely made of fresh vegetables for the vegeterians")
          
-    puts "Seeding user meal booking data ...."
+     puts "Seeding user meal booking data ...."
 
         usermealbooking1 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-05-12T10:00",quantity:4,total_price:(meal1.id * 1))
 
-        usermealbooking2 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "direct", booking_date: "2019-05-12T10:00",quantity:1,total_price:(meal1.id * 1))
+        usermealbooking2 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "In House", booking_date: "2023-02-26T10:00",quantity:1,total_price:(meal1.id * 1))
 
-        usermealbooking3 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "offline", booking_date: "2020-05-12T10:00",quantity:3,total_price:(meal1.id * 1))
+        usermealbooking3 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-02-26T10:00",quantity:3,total_price:(meal1.id * 1))
 
-        usermealbooking4 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2021-05-12T10:00",quantity:5,total_price:(meal1.id * 1))
+        usermealbooking4 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-02-14T10:00",quantity:5,total_price:(meal1.id * 1))
 
-        usermealbooking5 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "offline", booking_date: "2022-05-12T10:00",quantity:3,total_price:(meal1.id * 1))
+        usermealbooking5 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "In House", booking_date: "2023-05-01T08:00",quantity:3,total_price:(meal1.id * 1))
        
 puts "End of seeding data!"
 
