@@ -5,13 +5,34 @@ class Ability
 
   def initialize(user)
     # Define abilities for the user here. 
-      if user.manager?
+      if user.manager? || user.admin?
         can :manage, :all
       elsif user.room_service?
+        can :read, RoomService 
         can [:read, :update],  UserProfile
+        can :destroy, User
+      elsif user.cook? 
+        can [:read, :update], SpecialMealBooking
+        can [:read, :update],  UserProfile
+        can :destroy, User
+        # can :read, UserRoomBooking
+        # can :read, Room
+      elsif user.security?
         can :read, UserRoomBooking
-    
-        
+        # include reading of car booking details by the security officer
+        # can :read, CarBooking
+        can :read, Car
+        can :read, RoomType
+        can :read, Room
+        can :read, User
+      else
+        # can [:read, create], Car
+        # can [:read, create], CarBooking
+        can :read, RoomType
+        can :read, Room
+        can [:read, :update],  UserProfile
+        can [:read, :create, :update], SpecialMealBooking
+        can :destroy, User  
       end
 
       #  return unless user.manager?

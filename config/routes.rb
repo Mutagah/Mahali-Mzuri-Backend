@@ -4,10 +4,12 @@
   # root "articles#index"
 Rails.application.routes.draw do
   resources :car_bookings
-  resources :cars
+  
   namespace :api do
     namespace :v1 do
+      resources :cars
       resources :rooms
+      resources :room_services
       resources :room_types
       resources :user_meal_bookings
       resources :users

@@ -24,3 +24,6 @@
 
 # Ignore the database.yml file
 /config/database.yml
+
+# Ignoring the schema.rb file
+/db/schema.rb

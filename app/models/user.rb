@@ -60,4 +60,8 @@ class User < ApplicationRecord
     has_many :user_meal_bookings
     
     has_many :meals, through: :user_meal_bookings
+
+    # Information on room Services
+
+    has_many :room_services,dependent: :destroy
 end

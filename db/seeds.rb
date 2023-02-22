@@ -22,6 +22,7 @@ puts "Seeding Database tables"
 
         user6 = User.create!(username:"ezra",email_address:"ezranjeru@gmail.com",password:"mahalimzuri",password_confirmation:"mahalimzuri",role:"client")
 
+        user7 = User.create!(username:"tasha",email_address:"tashacounts254@gmail.com",password:"mahalimzuri",password_confirmation:"mahalimzuri",role:"admin")
 
     puts "Seeding room type data and rooms data...."
 
@@ -49,7 +50,18 @@ puts "Seeding Database tables"
 
         booking1 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(11..20),number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
 
-        booking1a = UserRoomBooking.create!(user_id:user3.id,room_id:booking1.room.id,number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
+        puts " .... Seeding room service data for the first booking ...."
+
+            room_service_1a = RoomService.create!(user_id:user3.id,user_room_booking_id:booking1.id,room_id:"#{booking1.room_id}",service_date:"2023-05-12")
+
+            room_service_1b = RoomService.create!(user_id:user3.id,user_room_booking_id:booking1.id,room_id:"#{booking1.room_id}",service_date:"2023-05-13")
+
+            room_service_1c = RoomService.create!(user_id:user3.id,user_room_booking_id:booking1.id,room_id:"#{booking1.room_id}",service_date:"2023-05-14")
+
+            room_service_1d = RoomService.create!(user_id:user3.id,user_room_booking_id:booking1.id,room_id:"#{booking1.room_id}",service_date:"2023-05-15")
+
+        puts  ".... Seeding special meals booking data for our first user ...."
+
 
         booking2 = UserRoomBooking.create!(user_id:user6.id,room_id:rand(41..60),number_of_adults:1,number_of_kids:0,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
 
