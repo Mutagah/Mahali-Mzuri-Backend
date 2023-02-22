@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :rooms
       resources :room_types
       resources :special_meal_bookings
+      resources :user_meal_bookings
       resources :users
       resources :user_profiles
       resources :user_room_bookings
