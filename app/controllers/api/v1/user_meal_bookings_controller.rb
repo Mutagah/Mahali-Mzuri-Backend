@@ -1,6 +1,9 @@
 module Api
     module V1
         class UserMealBookingsController < ApplicationController
+
+            load_and_authorize_resource
+
             def index
                 UserMealBooking = UserMealBooking.all 
                 render json: UserMealBooking, status: :ok
@@ -35,7 +38,7 @@ module Api
             end
         
             def render_not_found_response
-                render json: {"Error": "Meal not found"}, status: :not_found
+                render json: {"Error": "User Meal not found"}, status: :not_found
             end
         
             def render_unprocessable_entity_response(exception)
