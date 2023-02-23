@@ -74,15 +74,15 @@ puts "Seeding Database tables"
          
      puts "Seeding user meal booking data ...."
 
-        usermealbooking1 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-05-12T10:00",quantity:4,total_price:(meal1.id * 1))
+        usermealbooking1 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "online", booking_date: "2023-05-12T10:00",quantity:4,total_price:(meal1.id * 1))
 
-        usermealbooking2 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "In House", booking_date: "2023-02-26T10:00",quantity:1,total_price:(meal1.id * 1))
+        usermealbooking2 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "In House", booking_date: "2023-02-26T10:00",quantity:1,total_price:(meal1.id * 1))
 
-        usermealbooking3 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-02-26T10:00",quantity:3,total_price:(meal1.id * 1))
+        usermealbooking3 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "online", booking_date: "2023-02-26T10:00",quantity:3,total_price:(meal1.id * 1))
 
-        usermealbooking4 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-02-14T10:00",quantity:5,total_price:(meal1.id * 1))
+        usermealbooking4 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "online", booking_date: "2023-02-14T10:00",quantity:5,total_price:(meal1.id * 1))
 
-        usermealbooking5 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "In House", booking_date: "2023-05-01T08:00",quantity:3,total_price:(meal1.id * 1))
+        usermealbooking5 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "In House", booking_date: "2023-05-01T08:00",quantity:3,total_price:(meal1.id * 1))
        
 puts "End of seeding data!"
 

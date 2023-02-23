@@ -86,6 +86,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_094638) do
 
   create_table "special_meal_bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "user_room_booking_id", null: false
+    t.bigint "room_id", null: false
     t.string "meal_name"
     t.string "meal_type"
     t.string "meal_description"
@@ -95,7 +97,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_094638) do
     t.integer "meal_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_special_meal_bookings_on_room_id"
     t.index ["user_id"], name: "index_special_meal_bookings_on_user_id"
+    t.index ["user_room_booking_id"], name: "index_special_meal_bookings_on_user_room_booking_id"
   end
 
   create_table "user_meal_bookings", force: :cascade do |t|
@@ -132,7 +136,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_094638) do
   create_table "user_room_bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
-    t.integer "number_of_residents"
+    t.integer "number_of_adults"
+    t.integer "number_of_kids"
     t.datetime "booking_date"
     t.datetime "check_out_date"
     t.datetime "created_at", null: false
@@ -157,6 +162,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_20_094638) do
   add_foreign_key "room_services", "user_room_bookings"
   add_foreign_key "room_services", "users"
   add_foreign_key "rooms", "room_types"
+  add_foreign_key "special_meal_bookings", "rooms"
+  add_foreign_key "special_meal_bookings", "user_room_bookings"
   add_foreign_key "special_meal_bookings", "users"
   add_foreign_key "user_meal_bookings", "meals"
   add_foreign_key "user_meal_bookings", "rooms"
