@@ -14,7 +14,7 @@ class Ability
       elsif user.cook? 
         can [:read, :update], SpecialMealBooking
         can [:read, :update], UserProfile
-        can :manage, : Meal
+        can :manage, Meal
         can [:read], UserMealBooking
         can :destroy, User
         # can :read, UserRoomBooking
@@ -31,6 +31,7 @@ class Ability
         # can [:read, create], Car
         # can [:read, create], CarBooking
         can :read, RoomType
+        can :read, Meal
         can :read, Room
         can [:read, :update],  UserProfile
         can :manage, UserMealBooking

@@ -1,56 +1,41 @@
 module Api
     module V1
         class MealsController < ApplicationController
-            rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-            rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-             wrap_parameters format: []
+            # before_action :authenticate_user!
+            before_action :authorize_cook_or_manager!, only: [:create]
 
              load_and_authorize_resource
 
             def index
-                Meals = Meal.all 
-                render json: Meals, status: :ok
+                @meals = Meal.all
+                render status: :ok, template: "meals/index"
             end
-        
+
             def show
-                Meals = find_Meals
-                render json: Meals, status: :ok
+                @meal = Meal.find(params[:id])
+                render status: :ok, template: "meals/show"
             end
-        
-            def create               
-                Meals = Meal.create!(Meals_params)
-                render json: Meals, status: :created
-            end
-        
-            def update
-                Meals = find_Meals
-                Meal.update!(Meals_params)
-                show
-            end
-        
-            def destroy
-                Meals = find_Meals
-                Meal.destroy
-                head :no_content
-            end
-        
-            private
             
-            def Meals_params
-                params.permit(:meal_type, :meal_name, :meal_price, :description)
+            def create
+                @meals = Meal.create!(meal_params)
+                render json: @meals,status: :created
+            end
+
+           
+            
+              private
+            
+            def meal_params
+                params.require(:meal).permit(:meal_type, :meal_name, :meal_price, :description)
+            end
+
+            def authorize_cook_or_manager!
+                unless current_user && (current_user.role == "cook" || current_user.role == "manager")
+                  render json: { errors: "You are not authorized to perform this action." }, status: :unauthorized
+                end
             end
         
-            def render_not_found_response
-                render json: {"Error": "Meal not found"}, status: :not_found
-            end
         
-            def render_unprocessable_entity_response(exception)
-                render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
-            end
-        
-            def find_Meals
-                Meal.find(params[:id])
-            end
         end
     end
 end
