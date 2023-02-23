@@ -1,6 +1,10 @@
 module Api
     module V1
         class MealsController < ApplicationController
+            rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+            rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+             wrap_parameters format: []
+
              load_and_authorize_resource
 
             def index
@@ -33,7 +37,7 @@ module Api
             private
             
             def Meals_params
-                params.permit(:user_id,:meal_id,:room_id,:booking_type,:booking_date,:quantity,:total_price)
+                params.permit(:meal_type, :meal_name, :meal_price, :description)
             end
         
             def render_not_found_response
