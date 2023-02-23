@@ -9,14 +9,13 @@ class Ability
         can :manage, :all
       elsif user.room_service?
         can :read, RoomService 
-        can :read, Meal
         can [:read, :update],  UserProfile
         can :destroy, User
       elsif user.cook? 
         can [:read, :update], SpecialMealBooking
         can [:read, :update], UserProfile
-        can [:read, :update, :Delete], Meal
-        can [:read, :update], UserMealBooking
+        can :manage, : Meal
+        can [:read], UserMealBooking
         can :destroy, User
         # can :read, UserRoomBooking
         # can :read, Room
@@ -24,7 +23,6 @@ class Ability
         can :read, UserRoomBooking
         # include reading of car booking details by the security officer
         # can :read, CarBooking
-        can :read, meal
         can :read, Car
         can :read, RoomType
         can :read, Room
@@ -34,7 +32,8 @@ class Ability
         # can [:read, create], CarBooking
         can :read, RoomType
         can :read, Room
-        can [:read, :create, :update], SpecialMealBooking
+        can [:read, :update],  UserProfile
+        can :manage, UserMealBooking
         can :destroy, User  
       end
 
