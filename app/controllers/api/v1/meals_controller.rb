@@ -1,40 +1,54 @@
 module Api
     module V1
         class MealsController < ApplicationController
-            # before_action :authenticate_user!
-            before_action :authorize_cook_or_manager!, only: [:create]
-
-             load_and_authorize_resource
-
+        # get a list of all meals
             def index
-                @meals = Meal.all
-                render status: :ok, template: "meals/index"
+                @meal = Meal.all
+                render json: @meal, status: :ok
             end
 
+            # show a meal by id
             def show
                 @meal = Meal.find(params[:id])
-                render status: :ok, template: "meals/show"
+                render json: @meal, status: :ok
             end
-            
+
+            # creating a single meal
             def create
-                @meals = Meal.create!(meal_params)
-                render json: @meals,status: :created
-            end
-
-           
+                @meal = Meal.new(meal_params)
             
-              private
-            
-            def meal_params
-                params.require(:meal).permit(:meal_type, :meal_name, :meal_price, :description)
-            end
-
-            def authorize_cook_or_manager!
-                unless current_user && (current_user.role == "cook" || current_user.role == "manager")
-                  render json: { errors: "You are not authorized to perform this action." }, status: :unauthorized
+                if @meal.save
+                  render json: @meal, status: :created
+                else
+                  render json: @meal.errors, status: :unprocessable_entity
                 end
             end
+
         
+            # to update already created meal by a single entry or several
+              def update
+                @meal = Meal.find(params[:id])
+            
+                if @meal.update(meal_params)
+                  render json: @meal, status: :ok
+                else
+                  render json: @meal.errors, status: :unprocessable_entity
+                end
+              end
+            
+            #  to delete a meal
+            def destroy
+                @meal = Meal.find(params[:id])
+                @meal.destroy
+                 # returns a head in the response but no body
+                head :no_content
+            end
+            
+              private
+        
+              def meal_params
+                params.require(:meal).permit(:meal_type, :meal_name, :meal_price, :description)
+              end
         
         end
     end
