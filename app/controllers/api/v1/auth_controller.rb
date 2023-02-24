@@ -11,9 +11,12 @@ module Api
                     if (user && user.authenticate(user_login_params[:password])) || (mteja && mteja.authenticate(user_login_params[:password]))
                         if user != nil
                             token = encode_token({user_id: user.id})
+                            session[:token] ||= token
                             render json: { user: UserSerializer.new(user), jwt: token }, status: :accepted 
                         else 
+                            
                             token = encode_token({user_id: mteja.id})
+                            session[:token] ||= token
                             render json: { user: UserSerializer.new(mteja), jwt: token }, status: :accepted 
                         end
                         
