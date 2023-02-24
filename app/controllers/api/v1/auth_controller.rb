@@ -19,7 +19,7 @@ module Api
                         end
                         
                     else 
-                        render json:{ error: "Invalid username or password"}, status: :unauthorized
+                        render json:{ error: "Invalid username/email address or password"}, status: :unauthorized
                     end
             end
 
