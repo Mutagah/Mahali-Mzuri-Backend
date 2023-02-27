@@ -14,7 +14,7 @@ puts "Seeding Database tables"
 
         user2 = User.create!(username:"irene",email_address:"irenenjuguna@gmail.com",password:"mahalimzuri",password_confirmation:"mahalimzuri",role:"client")  
 
-        user3 = User.create!(username:"mutagah",email_address:"kihahumutagah@gmail.com",password:"mahalimzuri",password_confirmation:"mahalimzuri",role:"room_service")
+        user3 = User.create!(username:"mutagah",email_address:"kihahumutagah@gmail.com",password:"mahalimzuri",password_confirmation:"mahalimzuri",role:"rooms")
 
         user4 = User.create!(username:"zamzam",email_address:"zamzamhassan@gmail.com",password:"mahalimzuri",password_confirmation:"mahalimzuri",role:"cook")
 
@@ -50,20 +50,7 @@ puts "Seeding Database tables"
 
         booking1 = UserRoomBooking.create!(user_id:user2.id,room_id:rand(11..20),number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
 
-        puts " .... Seeding room service data for the first booking ...."
-
-            room_service_1a = RoomService.create!(user_id:user3.id,user_room_booking_id:booking1.id,room_id:"#{booking1.room_id}",service_date:"2023-05-12")
-
-            room_service_1b = RoomService.create!(user_id:user3.id,user_room_booking_id:booking1.id,room_id:"#{booking1.room_id}",service_date:"2023-05-13")
-
-            room_service_1c = RoomService.create!(user_id:user3.id,user_room_booking_id:booking1.id,room_id:"#{booking1.room_id}",service_date:"2023-05-14")
-
-            room_service_1d = RoomService.create!(user_id:user3.id,user_room_booking_id:booking1.id,room_id:"#{booking1.room_id}",service_date:"2023-05-15")
-
-        puts  ".... Seeding special meals booking data for our first user ...."
-
-            specialmealbookings = SpecialMealBooking.create!(user_id:user2.id,
-            room_id:"#{booking1.room_id}",user_room_booking_id:booking1.id,meal_name:"Grilled Fish in Coconut Sauce", meal_type:"Dinner", meal_description:"This dish is a Coastal E/African delicacy that is a loved by almost every family up and down the East Coast, from Mombasa, to Malindi, Lamu and all the way to Zanzibar! A delicious smoky flavourful grilled fish which is then coated with a rich, thick and creamy tamarind-flavoured coconut sauce.This dish is particularly enjoyable with Coconut Rice but can also be had with Mandazi, or Naan and maybe a side of spinach. Once you try this dish, it will definitely count as one of your favourite exotic seafood meals!! YUM!!", number_of_kids:0, number_of_adults:2,booking_date:"2023-05-12T22:00")
+        booking1a = UserRoomBooking.create!(user_id:user3.id,room_id:booking1.room.id,number_of_adults:2,number_of_kids:0,booking_date:"2023-05-12T10:00",check_out_date:"2023-05-14T10:00")
 
         booking2 = UserRoomBooking.create!(user_id:user6.id,room_id:rand(41..60),number_of_adults:1,number_of_kids:0,booking_date:"2023-05-12T12:00",check_out_date:"2023-05-15T10:00")
 
@@ -85,17 +72,17 @@ puts "Seeding Database tables"
 
         meal5 = Meal.create!(meal_type:"Super",meal_name:"Vegetable Salad",meal_price:2000,description:"Purely made of fresh vegetables for the vegeterians")
          
-    puts "Seeding user meal booking data ...."
+     puts "Seeding user meal booking data ...."
 
-        usermealbooking1 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2023-05-12T10:00",quantity:4,total_price:(meal1.id * 1))
+        usermealbooking1 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "online", booking_date: "2023-05-12T10:00",quantity:4,total_price:(meal1.id * 1))
 
-        usermealbooking2 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "direct", booking_date: "2019-05-12T10:00",quantity:1,total_price:(meal1.id * 1))
+        usermealbooking2 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "In House", booking_date: "2023-02-26T10:00",quantity:1,total_price:(meal1.id * 1))
 
-        usermealbooking3 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "offline", booking_date: "2020-05-12T10:00",quantity:3,total_price:(meal1.id * 1))
+        usermealbooking3 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "online", booking_date: "2023-02-26T10:00",quantity:3,total_price:(meal1.id * 1))
 
-        usermealbooking4 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "online", booking_date: "2021-05-12T10:00",quantity:5,total_price:(meal1.id * 1))
+        usermealbooking4 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "online", booking_date: "2023-02-14T10:00",quantity:5,total_price:(meal1.id * 1))
 
-        usermealbooking5 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),booking_type: "offline", booking_date: "2022-05-12T10:00",quantity:3,total_price:(meal1.id * 1))
+        usermealbooking5 = UserMealBooking.create!(user_id:user2.id,meal_id:rand(1..5),room_id:rand(1..5),booking_type: "In House", booking_date: "2023-05-01T08:00",quantity:3,total_price:(meal1.id * 1))
        
 puts "End of seeding data!"
 

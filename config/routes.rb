@@ -11,10 +11,11 @@ Rails.application.routes.draw do
       resources :rooms
       resources :room_services
       resources :room_types
-      resources :special_meal_bookings
+      resources :user_meal_bookings
       resources :users
       resources :user_profiles
       resources :user_room_bookings
+      resources :meals
       post '/login', to: 'auth#create'
     end 
   end

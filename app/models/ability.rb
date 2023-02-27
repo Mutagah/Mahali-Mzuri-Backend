@@ -7,13 +7,15 @@ class Ability
     # Define abilities for the user here. 
       if user.manager? || user.admin?
         can :manage, :all
-      elsif user.room_service?
+      elsif user.rooms?
         can :read, RoomService 
         can [:read, :update],  UserProfile
         can :destroy, User
       elsif user.cook? 
         can [:read, :update], SpecialMealBooking
-        can [:read, :update],  UserProfile
+        can [:read, :update], UserProfile
+        can :manage, Meal
+        can [:read], UserMealBooking
         can :destroy, User
         # can :read, UserRoomBooking
         # can :read, Room
@@ -29,9 +31,10 @@ class Ability
         # can [:read, create], Car
         # can [:read, create], CarBooking
         can :read, RoomType
+        can :read, Meal
         can :read, Room
         can [:read, :update],  UserProfile
-        can [:read, :create, :update], SpecialMealBooking
+        can :manage, UserMealBooking
         can :destroy, User  
       end
 
