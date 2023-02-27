@@ -7,7 +7,7 @@ class Ability
     # Define abilities for the user here. 
       if user.manager? || user.admin?
         can :manage, :all
-      elsif user.room_service?
+      elsif user.rooms?
         can :read, RoomService 
         can [:read, :update],  UserProfile
         can :destroy, User

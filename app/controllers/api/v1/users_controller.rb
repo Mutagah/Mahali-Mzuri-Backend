@@ -5,7 +5,7 @@ module Api
             
             skip_before_action :authorize, only: [:create]
 
-            load_and_authorize_resource
+            load_and_authorize_resource :except => [:create]
 
             def index
                 render json: User.all, status: :ok
