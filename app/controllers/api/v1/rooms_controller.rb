@@ -3,8 +3,16 @@ module Api
     module V1
         class RoomsController < ApplicationController
         
-        load_and_authorize_resource
+        load_and_authorize_resource :except => [:specific_rooms]
+
+        skip_before_action :authorize, only: [:specific_rooms]
         
+        # fetching where room conditions is equal to good and the room_type_id is specified
+        # This action is for the customer
+        def specific_rooms
+            render json:Room.where("room_type_id  = ? AND room_condition = ?", params[:room_type_id], "good"),status: :ok
+        end
+
         # All actions are for the manager
         def index
             render json:Room.all, status: :ok

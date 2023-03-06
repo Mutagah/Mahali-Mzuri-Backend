@@ -3,7 +3,7 @@ module Api
     module V1
         class RoomTypesController < ApplicationController
          
-        load_and_authorize_resource :except => [:index]
+        load_and_authorize_resource :except => [:index,:show]
 
         skip_before_action :authorize, only: [:show,:index]
 

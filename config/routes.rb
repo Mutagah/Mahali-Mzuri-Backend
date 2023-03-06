@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :user_room_bookings
       resources :meals
       post '/login', to: 'auth#create'
+      post "specific_rooms", to: "rooms#specific_rooms"
     end 
   end
 end
