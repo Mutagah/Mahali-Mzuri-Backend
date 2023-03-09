@@ -12,6 +12,9 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+#  Used to facilitate various http methods in ruby
+gem "rest-client", "~> 2.1"
+
 # Used in encryption of passwords
 gem "bcrypt"
 

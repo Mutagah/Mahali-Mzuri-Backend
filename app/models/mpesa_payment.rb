@@ -1,0 +1,2 @@
+class MpesaPayment < ApplicationRecord
+end
