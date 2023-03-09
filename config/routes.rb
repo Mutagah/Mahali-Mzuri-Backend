@@ -3,6 +3,7 @@
   # Defines the root path route ("/")
   # root "articles#index"
 Rails.application.routes.draw do
+  get "/access_token", to:"mpesa_payments#generate_access_token"
   resources :car_bookings
   
   namespace :api do
