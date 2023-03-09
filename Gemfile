@@ -6,8 +6,11 @@ ruby "2.7.4"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.1"
 
-# # Use postgresql as the database for Active Record
+# Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
+
+# Using dotenv gem to accept the usage of .env files in this ruby app
+gem 'dotenv', '~> 2.1', '>= 2.1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -29,6 +32,9 @@ gem "rack-cors"
 
 # Used in automatice generation of serializers
 gem "active_model_serializers"
+
+# mpesa_stk is used to initiate an mpesa transaction via an stk push
+gem 'mpesa_stk'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
