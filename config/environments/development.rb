@@ -19,7 +19,7 @@ Rails.application.configure do
 
 
   #allow ngrok
-  config.hosts << /.*\.ngrok\.io/
+  config.hosts << /.*\.ngrok-free\.app/
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

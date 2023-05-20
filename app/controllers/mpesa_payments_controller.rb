@@ -52,7 +52,7 @@ class MpesaPaymentsController < ApplicationController
     end
 
 
-    # private
+    private
 
     def generate_access_token
         @access_token_url = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"
@@ -67,9 +67,9 @@ class MpesaPaymentsController < ApplicationController
          }
          
         # Making the request with the help of rest-client gem
-        res = RestClient::Request.execute( url: @access_token_url, method: :get, headers:{Authorization: "Basic #{@auth}"} )    
+        res = RestClient::Request.execute(url: @access_token_url, method: :get, headers:{Authorization: "Basic #{@auth}"} )    
 
-        res
+       res
 
     end
 
