@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_125418) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_22_075630) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_125418) do
     t.string "meal_name"
     t.integer "meal_price"
     t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mpesa_payment_successes", force: :cascade do |t|
+    t.string "merchantRequestId"
+    t.string "checkoutRequestID"
+    t.string "receiptNumber"
+    t.integer "phoneNumber"
+    t.integer "amount"
+    t.string "transcationDate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

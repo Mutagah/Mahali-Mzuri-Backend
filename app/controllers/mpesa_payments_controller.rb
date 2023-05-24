@@ -5,7 +5,13 @@ class MpesaPaymentsController < ApplicationController
     require "rest-client"
     
     def stkpush
-            phoneNumber = params[:phoneNumber]
+        # binding.irb
+            if params[:phoneNumber].size != 12
+                render json:{
+                    "Error":"Please check your phone number."
+                },status: :unprocessable_entity 
+            else
+            phoneNumber = params[:phoneNumber]        
             amount = params[:amount]
             url =  "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
             timestamp = "#{Time.now.strftime "%Y%m%d%H%M%S"}"
@@ -40,15 +46,21 @@ class MpesaPaymentsController < ApplicationController
                 case response.code
                     when 500
                     [ :error, JSON.parse(response.to_str) ]
+
                     when 400
                     [ :error, JSON.parse(response.to_str) ]
+
                     when 200
                     [ :success, JSON.parse(response.to_str) ]
+                    
                         else
                             fail "Invalid response #{response.to_str} received."
                 end
+
         end
-        render json: response
+        render json: response[1]
+        end
+            
     end
 
 

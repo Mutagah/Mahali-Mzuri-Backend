@@ -1,3 +1,3 @@
-class MpesaPaymentSerializer < ActiveModel::Serializer
-  attributes :id, :phoneNumber, :amount
-end
+# class MpesaPaymentSerializer < ActiveModel::Serializer
+#   attributes :id, :phoneNumber, :amount
+# end
