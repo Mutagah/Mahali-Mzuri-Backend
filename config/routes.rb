@@ -3,9 +3,10 @@
   # Defines the root path route ("/")
   # root "articles#index"
 Rails.application.routes.draw do
-  resources :mpesa_payment_successes
+  
   get "/access_token", to:"mpesa_payments#generate_access_token"
-  post '/stkpush', to: 'mpesa_payments#stkpush'
+  post "/stkpush", to: 'mpesa_payments#stkpush'
+  post "/mpesa_payment_success/callback_url", to:"mpesa_payment_successes#create"
   resources :car_bookings
   
   namespace :api do
