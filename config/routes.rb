@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   post "/stkpush", to: 'mpesa_payments#stkpush'
   post "/mpesa_payment_success/callback_url", to:"mpesa_payment_successes#create"
   resources :car_bookings
-  
+  resources :cars
   namespace :api do
     namespace :v1 do
-      resources :cars
+      
       resources :rooms
       resources :room_services
       resources :room_types
