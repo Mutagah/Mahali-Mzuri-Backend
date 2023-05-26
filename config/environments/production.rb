@@ -6,8 +6,6 @@ Rails.application.configure do
   #allow render links
   config.hosts << /.*\.onrender.com/
 
- 
-
   # Code is not reloaded between requests.
   config.cache_classes = true
 
