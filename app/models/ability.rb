@@ -35,6 +35,7 @@ class Ability
         can :read, Room
         can [:read, :update],  UserProfile
         can :manage, UserMealBooking
+        can :read, UserRoomBooking
         can :destroy, User  
       end
 
